@@ -31,11 +31,14 @@ def containsDuplicateSorting(nums):
 
 
 def containsDuplicate(nums):
-    """Use set
-
-    Complexity
-    - Time complexity:O(n)
-    - Space complexity:O(n)
+    """Use set. When you call the len() function, you do not
+    give the interpreter the command to find the length by
+    traversing, but rather you ask the interpreter to print
+    a value that is already stored.
+    Hence, len() function in Python runs in O(1) complexity.
+        Complexity
+        - Time complexity:O(n)
+        - Space complexity:O(n)
     """
     return len(set(nums)) < len(nums)
 
