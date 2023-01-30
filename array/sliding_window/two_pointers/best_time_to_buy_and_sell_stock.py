@@ -29,9 +29,9 @@ def maxProfit(prices: List[int]) -> int:
     """
     # left is best day to buy
     # right is best day to sell
-    left_pointer = 0 
+    left_pointer = 0
     max_profit = 0
-    
+
     for right_pointer in range(1, len(prices)):
         if prices[left_pointer] > prices[right_pointer]:
             left_pointer = right_pointer
@@ -40,10 +40,3 @@ def maxProfit(prices: List[int]) -> int:
             profit = prices[right_pointer] - prices[left_pointer]
             max_profit = max(profit, max_profit)
     return max_profit
-                
-                
-            
-            
-    
-    
-        

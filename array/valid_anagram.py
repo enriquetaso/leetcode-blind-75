@@ -1,4 +1,4 @@
-# https://www.youtube.com/watch?v=9UtInBqnCgA&feature=youtu.be 
+# https://www.youtube.com/watch?v=9UtInBqnCgA&feature=youtu.be
 # Given two strings s and t, return true if t is
 # an anagram of s, and false otherwise.
 #
@@ -42,8 +42,10 @@ def isAnagram(s: str, t: str) -> bool:
             return False
     return True
 
+
 def isAnagram2(s: str, t: str) -> bool:
     return Counter(s) == Counter(t)
+
 
 def isAnagram3(s: str, t: str) -> bool:
     # Can you solve the problem with O(1) memory?
@@ -52,5 +54,5 @@ def isAnagram3(s: str, t: str) -> bool:
     # generally speaking, it is less effective
     # than the first two options.
     # Perhaps you could create your own sorting
-    # algorithm. 
+    # algorithm.
     return sorted(s) == sorted(t)

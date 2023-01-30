@@ -7,11 +7,11 @@ def groupAnagrams(strs):
     :type strs: List[str]
     :rtype: List[List[str]]
     """
-    response = defaultdict(list)    
+    response = defaultdict(list)
     for word in strs:
-        count = [0] * 26 # a..z
+        count = [0] * 26  # a..z
         for char in word:
-            count[ord(char) -  ord("a")] += 1
-        
+            count[ord(char) - ord("a")] += 1
+
         response[tuple(count)].append(word)
     return response.values()
