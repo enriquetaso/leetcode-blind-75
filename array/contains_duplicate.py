@@ -36,6 +36,7 @@ def containsDuplicate(nums):
     traversing, but rather you ask the interpreter to print
     a value that is already stored.
     Hence, len() function in Python runs in O(1) complexity.
+    https://www.geeksforgeeks.org/internal-working-of-the-len-function-in-python/
         Complexity
         - Time complexity:O(n)
         - Space complexity:O(n)
