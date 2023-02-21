@@ -1,7 +1,22 @@
 # Problem: Given an array of integers, find if the array contains any duplicates.
 # Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
 
+import time
 
+
+def timer_func(func):
+
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        end = time.perf_counter()
+        print(f"Finished in : {(end - start)*1000000:.1f}ms")
+        return result
+    
+    return wrapper
+
+
+@timer_func
 def containsDuplicateBruteforce(nums):
     """Brute force
 
@@ -15,7 +30,7 @@ def containsDuplicateBruteforce(nums):
                 return True
     return False
 
-
+@timer_func
 def containsDuplicateSorting(nums):
     """Sorting
 
@@ -29,7 +44,7 @@ def containsDuplicateSorting(nums):
             return True
     return False
 
-
+@timer_func
 def containsDuplicate(nums):
     """Use set. When you call the len() function, you do not
     give the interpreter the command to find the length by
@@ -43,8 +58,8 @@ def containsDuplicate(nums):
     """
     return len(set(nums)) < len(nums)
 
-
-def containsDuplicate(nums):
+@timer_func
+def containsDuplicateWithoutSet(nums):
     """Use set without lentgh comparison
 
     Complexity
@@ -62,3 +77,7 @@ def containsDuplicate(nums):
 if __name__ == "__main__":
     nums = [1, 2, 3, 1]
     print(containsDuplicate(nums))
+    print(containsDuplicateBruteforce(nums))
+    print(containsDuplicateSorting(nums))
+    print(containsDuplicateWithoutSet(nums))
+    

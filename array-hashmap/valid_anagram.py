@@ -22,9 +22,22 @@
 # table is a more generic solution and could adapt
 # to any range of characters.
 
+import time
 from typing import Counter
 
 
+def timer_func(func):
+
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        end = time.perf_counter()
+        print(f"Finished in : {(end - start)*1000000:.1f}ms")
+        return result
+    
+    return wrapper
+
+@timer_func
 def isAnagram(s: str, t: str) -> bool:
     """
     :type s: str
@@ -46,8 +59,13 @@ def isAnagram(s: str, t: str) -> bool:
 def isAnagram2(s: str, t: str) -> bool:
     return Counter(s) == Counter(t)
 
-
+@timer_func
 def isAnagram3(s: str, t: str) -> bool:
+    """Can you solve the problem with O(1) memory?
+    
+    Yes, using """
+    if len(s) != len(t):
+        return False
     # Can you solve the problem with O(1) memory?
     # Yes, sorting the strings.
     # Depending on the sorting algorithm, but
@@ -56,3 +74,9 @@ def isAnagram3(s: str, t: str) -> bool:
     # Perhaps you could create your own sorting
     # algorithm.
     return sorted(s) == sorted(t)
+
+if __name__ == "__main__":
+    s = "anagram"
+    t = "nagaram"
+    print(isAnagram(s, t))
+    print(isAnagram3(s, t))
