@@ -1,5 +1,5 @@
 # Given a string s containing just the characters
-# '(', ')', '{', '}', '[' and ']', determine if 
+# '(', ')', '{', '}', '[' and ']', determine if
 # the input string is valid.
 
 # An input string is valid if:
@@ -25,9 +25,7 @@ def isValid(s: str) -> bool:
     :returns: bool
     """
     stack = []
-    hash_simbols = {'}': '{', 
-                    ')': '(',
-                    ']': '['}
+    hash_simbols = {"}": "{", ")": "(", "]": "["}
     for simbol in s:
         if stack and simbol in hash_simbols:
             if stack[-1] == hash_simbols[simbol]:
@@ -36,5 +34,5 @@ def isValid(s: str) -> bool:
                 return False
         else:
             stack.append(simbol)
-            
+
     return True if not stack else False
