@@ -27,15 +27,15 @@ from typing import Counter
 
 
 def timer_func(func):
-
     def wrapper(*args, **kwargs):
         start = time.perf_counter()
         result = func(*args, **kwargs)
         end = time.perf_counter()
-        print(f"Finished in : {(end - start)*1000000:.1f}ms")
+        print(f"Finished in {func.__name__}: {(end - start)*1000000:.1f}ms")
         return result
-    
+
     return wrapper
+
 
 @timer_func
 def isAnagram(s: str, t: str) -> bool:
@@ -59,24 +59,58 @@ def isAnagram(s: str, t: str) -> bool:
 def isAnagram2(s: str, t: str) -> bool:
     return Counter(s) == Counter(t)
 
+
 @timer_func
 def isAnagram3(s: str, t: str) -> bool:
     """Can you solve the problem with O(1) memory?
-    
-    Yes, using """
+
+    Yes, using"""
     if len(s) != len(t):
         return False
+
     # Can you solve the problem with O(1) memory?
     # Yes, sorting the strings.
     # Depending on the sorting algorithm, but
     # generally speaking, it is less effective
     # than the first two options.
-    # Perhaps you could create your own sorting
+    # Perhaps you could create your    # print(isAnagram(s, t))
+    # print(isAnagram3(s, t))
+    # print(isAnagram4(s, t)) own sorting
     # algorithm.
     return sorted(s) == sorted(t)
+
+
+@timer_func
+def isAnagram4(s: str, t: str) -> bool:
+    if len(s) != len(t):
+        return False
+
+    for c in s:
+        if s.count(c) != t.count(c):
+            return False
+    return True
+
+
+@timer_func
+def isAnagram5(s: str, t: str) -> bool:
+    if len(s) != len(t):
+        return False
+
+    letters = [0] * 26  # [a .. z]
+    lettert = [0] * 26  # [a .. z]
+
+    for i in range(len(s)):
+        letters[ord(s[i]) - ord("a")] += 1
+        lettert[ord(t[i]) - ord("a")] += 1
+
+    return letters == lettert
+
 
 if __name__ == "__main__":
     s = "anagram"
     t = "nagaram"
     print(isAnagram(s, t))
     print(isAnagram3(s, t))
+    print(isAnagram4(s, t))
+    print(isAnagram5(s, t))
+    print(isAnagram4("eat", "eats"))

@@ -5,14 +5,13 @@ import time
 
 
 def timer_func(func):
-
     def wrapper(*args, **kwargs):
         start = time.perf_counter()
         result = func(*args, **kwargs)
         end = time.perf_counter()
         print(f"Finished in : {(end - start)*1000000:.1f}ms")
         return result
-    
+
     return wrapper
 
 
@@ -30,6 +29,7 @@ def containsDuplicateBruteforce(nums):
                 return True
     return False
 
+
 @timer_func
 def containsDuplicateSorting(nums):
     """Sorting
@@ -44,6 +44,7 @@ def containsDuplicateSorting(nums):
             return True
     return False
 
+
 @timer_func
 def containsDuplicate(nums):
     """Use set. When you call the len() function, you do not
@@ -57,6 +58,7 @@ def containsDuplicate(nums):
         - Space complexity:O(n)
     """
     return len(set(nums)) < len(nums)
+
 
 @timer_func
 def containsDuplicateWithoutSet(nums):
@@ -80,4 +82,3 @@ if __name__ == "__main__":
     print(containsDuplicateBruteforce(nums))
     print(containsDuplicateSorting(nums))
     print(containsDuplicateWithoutSet(nums))
-    
