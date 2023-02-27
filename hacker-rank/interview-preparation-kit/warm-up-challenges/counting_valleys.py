@@ -2,9 +2,6 @@ from collections import deque
 
 
 def countingValleys(steps: int, path: str) -> int:
-    if not (steps // 2):
-        return 0
-
     valleys = floor = 0
     steps = {"U": 1, "D": -1}
 
