@@ -15,6 +15,16 @@ def topKFrequent(nums: List[int], k: int) -> List[int]:
     return result
 
 
+def topKFrequent2(nums, k):
+    if k == len(nums):
+        return nums
+    frequent = Counter(nums)
+    return [
+        number
+        for _, number in sorted(frequent.items(), key=lambda x: x[0], reverse=True)
+    ][:k]
+
+
 def topKFrequent3(nums: List[int], k: int) -> List[int]:
     count = {}
     for n in nums:
@@ -41,7 +51,6 @@ def topKFrequent_neetcode(nums: List[int], k: int) -> List[int]:
             res.append(n)
             if len(res) == k:
                 return res
-
 
 
 if __name__ == "__main__":
