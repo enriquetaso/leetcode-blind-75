@@ -3,6 +3,10 @@ from collections import Counter
 
 
 def topKFrequent(nums: List[int], k: int) -> List[int]:
+    """
+    Time complexity: O(nlogn)
+    Space complexity: O(n)
+    """
     if k == len(nums):
         return nums
 
@@ -16,6 +20,10 @@ def topKFrequent(nums: List[int], k: int) -> List[int]:
 
 
 def topKFrequent2(nums, k):
+    """ 
+    Time complexity: O(nlogn)
+    Space complexity: O(n)
+    """
     if k == len(nums):
         return nums
     frequent = Counter(nums)
@@ -26,6 +34,10 @@ def topKFrequent2(nums, k):
 
 
 def topKFrequent3(nums: List[int], k: int) -> List[int]:
+    """
+    Time complexity: O(nlogn)
+    Space complexity: O(n)
+    """
     count = {}
     for n in nums:
         count[n] = 1 + count.get(n, 0)
@@ -35,6 +47,10 @@ def topKFrequent3(nums: List[int], k: int) -> List[int]:
 
 
 def topKFrequent_neetcode(nums: List[int], k: int) -> List[int]:
+    """
+    Time complexity: O(n)
+    Space complexity: O(n)
+    """
     count = {}
     freq = [[] for i in range(len(nums) + 1)]
 
