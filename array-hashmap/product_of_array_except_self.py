@@ -53,10 +53,9 @@ def productExceptSelf(nums: List[int]) -> List[int]:
 
 
 def productExceptSelf_try(nums):
-    """Time Limit Exceeded
-
+    """
     Time complexity:  O(n)
-    Memory: O(n)
+    Memory: O(3n)
     """
 
     #           [1,  2,   3,   4]
@@ -87,9 +86,6 @@ def productExceptSelf_try(nums):
         else:
             result[i] = prefix[i - 1] * postfix[i + 1]
 
-    print("nums", nums)
-    print("prefix", prefix)
-    print("posfix", postfix)
     return result
 
 
