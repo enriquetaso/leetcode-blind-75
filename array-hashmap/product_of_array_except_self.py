@@ -12,19 +12,11 @@ from math import prod
 from typing import List
 
 
-def productExceptSelf_wrong(nums: List[int]) -> List[int]:
-    """Time Limit Exceeded
-
-    Time complexity:  O(n^2)
-    """
+def productExceptSelf_using_math_library(nums):
     result = []
-    for i in range(len(nums)):
-        r = 1
-        prefix = nums[:i]
-        suffix = nums[(i + 1) :]
-        for item in prefix + suffix:
-            r *= item
-        result.append(r)
+    for index in range(len(nums)):
+        prod_result = 1 * prod(nums[:index]) * prod(nums[index + 1 :])
+        result.append(prod_result)
     return result
 
 
@@ -89,14 +81,26 @@ def productExceptSelf_try(nums):
     return result
 
 
+def productExceptSelf_using_iteration(nums):
+    result = []
+
+    for index in range(len(nums)):
+        prod_result = 1
+        for prefix_elem in nums[:index]:
+            prod_result *= prefix_elem
+        for postfix_elem in nums[index + 1 :]:
+            prod_result *= postfix_elem
+
+        result.append(prod_result)
+    return result
+
+
 if __name__ == "__main__":
     nums1 = [1, 2, 3, 4]
-    result = productExceptSelf_try(nums1)
-    print(result)
+    print(productExceptSelf_using_math_library(nums1))
 
-    # nums2 = [-1, 1, 0, -3, 3]
-    # result2 = productExceptSelf(nums2)
-    # print(result2)
+    nums2 = [-1, 1, 0, -3, 3]
+    print(productExceptSelf_using_math_library(nums2))
 
     # nums3 = [1, 2, 3, 4, 5]
     # result3 = productExceptSelf(nums3)
