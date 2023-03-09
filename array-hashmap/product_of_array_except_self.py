@@ -13,6 +13,9 @@ from typing import List
 
 
 def productExceptSelf_using_math_library(nums):
+    """
+    Time complexity:  O(logn)
+    """
     result = []
     for index in range(len(nums)):
         prod_result = 1 * prod(nums[:index]) * prod(nums[index + 1 :])
@@ -37,10 +40,15 @@ def productExceptSelf(nums: List[int]) -> List[int]:
         res[i] = prefix
         prefix *= nums[i]
 
+    print("Nums = ", nums)
+    print("res = ", res)
+    print("------------------")
     postfix = 1
     for i in range(len(nums) - 1, -1, -1):
+        print("i = ", i, "postfix = ", postfix, "res[i] = ", res[i])
         res[i] *= postfix
         postfix *= nums[i]
+        print("i = ", i, "postfix = ", postfix, "res[i] = ", res[i])
     return res
 
 
@@ -97,10 +105,10 @@ def productExceptSelf_using_iteration(nums):
 
 if __name__ == "__main__":
     nums1 = [1, 2, 3, 4]
-    print(productExceptSelf_using_math_library(nums1))
+    print(productExceptSelf(nums1))
 
-    nums2 = [-1, 1, 0, -3, 3]
-    print(productExceptSelf_using_math_library(nums2))
+    # nums2 = [-1, 1, 0, -3, 3]
+    # print(productExceptSelf(nums2))
 
     # nums3 = [1, 2, 3, 4, 5]
     # result3 = productExceptSelf(nums3)

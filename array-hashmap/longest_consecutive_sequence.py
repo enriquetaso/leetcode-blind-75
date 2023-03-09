@@ -25,7 +25,6 @@ def longestConsecutive_using_sort_and_set(nums: List[int]) -> int:
 
 def longestConsecutive(nums: List[int]) -> int:
     """
-
     Time complexity: O(n)
     Space complexity: O(n)
     """
